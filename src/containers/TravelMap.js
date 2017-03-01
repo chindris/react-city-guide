@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import Map from 'google-maps-react';
+import GoogleApiComponent from '../libs/GoogleApiComponent';
 
-class TravelMap extends Component {
+
+export class TravelMap extends Component {
 
   render() {
     return (
-      <Map google="" />
+      <Map google={this.props.google} />
     );
   }
 }
 
-export default TravelMap;
+export default GoogleApiComponent({
+   apiKey: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo"
+ })(TravelMap)
