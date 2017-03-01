@@ -1,20 +1,38 @@
-import React from 'react';
-import Attraction from './Attraction';
+import React, {Component} from 'react';
+import Attraction from '../../components/List/Attraction';
 import {connect} from 'react-redux';
+import {attractionsSelectedSet} from '../../actions/attractions_selected';
 
-const AttractionsList = ({attractions}) => (
-  <div>
-    {
-      attractions.map((attraction) => (
-        <Attraction key={attraction.id} attraction={attraction} />
-      ))
-    }
-  </div>
-);
+class AttractionsList extends Component {
+  setSelectedAttraction = (attractionId) => {
+    const {dispatch} = this.props;
+    dispatch(attractionsSelectedSet(attractionId));
+  }
+
+
+  render() {
+    const {attractions, selectedAttraction} = this.props;
+    return (
+      <div>
+        {
+          attractions.map((attraction) => (
+            <Attraction
+              key={attraction.id}
+              attraction={attraction}
+              onAttractionSeleced={this.setSelectedAttraction}
+              isSelected={attraction.id === selectedAttraction}
+            />
+          ))
+        }
+      </div>
+    )
+  }
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    attractions: state.attractions
+    attractions: state.attractions,
+    selectedAttraction: state.attractions_selected
   }
 }
 

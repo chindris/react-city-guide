@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 import initialState from './attractions.model';
-import dummyReducer from '../reducers/dummyReducer';
+import reducer from '../reducers/index';
 
-const store = createStore(dummyReducer, initialState);
+const store = createStore(reducer, initialState);
 
 export default store;
