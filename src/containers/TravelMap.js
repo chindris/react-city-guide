@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Map, {Marker}  from 'google-maps-react';
+import store from '../store/configureStore'
+
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
 
@@ -25,6 +27,13 @@ const mockedMarkers = [
 
 export class TravelMap extends Component {
 
+  getMarkersFromStore = (state)=> {
+    return state.attractions.map(attraction=>{ return {
+      name: attraction.title,
+      position: attraction.location,
+    }});
+  }
+
   render() {
     if (!this.props.loaded) {
       return <div>Loading...</div>
@@ -34,7 +43,7 @@ export class TravelMap extends Component {
       <Map google={this.props.google}
            className={'map'}>
         {
-          mockedMarkers.map(marker =>
+          this.getMarkersFromStore(store.getState()).map(marker =>
 
             <Marker name={marker.name} position={marker.position} />
           )

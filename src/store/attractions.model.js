@@ -7,8 +7,8 @@ const initialState = {
       rating: 4,
       address: 'Address of location 1',
       location: {
-        lat: 47.321,
-        lng: 49.342
+        lat: 37.759703,
+        lng: -122.428093
       },
       image: 'https://lh4.ggpht.com/wKrDLLmmxjfRG2-E-k5L5BUuHWpCOe4lWRF7oVs1Gzdn5e5yvr8fj-ORTlBF43U47yI=w300',
       reviews: [
