@@ -31,7 +31,7 @@ class AttractionsList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    attractions: state.attractions,
+    attractions: state.attractions.list,
     selectedAttraction: state.attractions_selected
   }
 }
