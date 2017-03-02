@@ -24,9 +24,9 @@ class ReviewForm extends Component {
     e.preventDefault();
   }
 
-  onRatingChange = (e) => {
+  onRatingChange = (nextValue, prevValue, name) => {
     this.setState({
-      rating: e.target.value,
+      rating: nextValue,
     });
   }
 
@@ -37,18 +37,15 @@ class ReviewForm extends Component {
   }
 
   render() {
+    const {attractionId} = this.props;
     return (
       <form onSubmit={this.onFormSubmit}>
-        <RatingWidget onRatingChange={this.onRatingChange} value={this.state.rating}/>
+        <RatingWidget name={`rating-new-review-${attractionId}`} onRatingChange={this.onRatingChange} value={this.state.rating}/>
         <CommentInput onTextChange={this.onTextChange} value={this.state.text}/>
         <SubmitButton text="Submit"/>
       </form>
     );
   }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return {}
 }
 
 export default connect()(ReviewForm);
