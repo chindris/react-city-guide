@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-import { search } from '../../actions/search';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { searchText } from '../../actions/search';
 
 class SearchBar extends Component {
-  render() {
-    const search = this.props.search;
-    const value = this.props.value;
+  onSearchChanged = (e) => {
+    const {dispatch} = this.props;
+    dispatch(searchText(e.target.value));
+  }
 
+  render() {
+    const {search} = this.props;
     return (
-      <SearchBar
+      <SearchBox
         type="text"
-        className="search"
-        placeholder="Search for attractions..."
-        value={value}
-        onChange={(event) => search(event.target.value)} />
+        placeholder="Search for attractions"
+        value={search}
+        onChange={this.onSearchChanged} />
     )
   }
 }
 
-const SearchBar = styled.input`
+const SearchBox = styled.input`
   width: 200px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
@@ -29,9 +30,9 @@ const SearchBar = styled.input`
   }
 `
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    attractions: state.attractions
+    search: state.search
   }
 }
 

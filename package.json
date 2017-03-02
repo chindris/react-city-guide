@@ -7,7 +7,10 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
+    "react-star-rating": "^1.4.2",
+    "react-star-rating-component": "^1.2.4",
     "redux": "^3.6.0",
+    "reselect": "^2.5.4",
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
