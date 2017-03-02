@@ -51,11 +51,14 @@ export class TravelMap extends Component {
       return <div>Loading...</div>
     }
 
-    const {attractions} = this.props;
+    const {attractions, attractions_selected} = this.props;
+    const selected_attraction_obj= this.getSelectedAttraction(attractions_selected);
 
     return (
       <Map google={this.props.google}
-           className={'map'}>
+           className={'map'}
+            center={selected_attraction_obj? selected_attraction_obj.location : null}
+      >
         {
           this.getMarkersFromAttractionList(attractions).map(marker =>
 
@@ -80,6 +83,7 @@ export class TravelMap extends Component {
             } /></h2>
             <h3>{this.state.selectedAttraction.address}</h3>
             <p>{this.state.selectedAttraction.description}</p>
+            <button onClick={()=> {console.log("JMOZGAWA: ")}}>Details</button>
 
           </div>
           }
@@ -93,6 +97,7 @@ const mapStateToProps = (state, ownProps) => {
   console.log("JMOZGAWA: state", state);
   return {
     attractions: getFilteredAttractions(state),
+    attractions_selected: state.attractions_selected,
   }
 }
 
