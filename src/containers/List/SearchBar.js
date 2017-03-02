@@ -12,21 +12,30 @@ class SearchBar extends Component {
   render() {
     const {search} = this.props;
     return (
-      <SearchBox
-        type="text"
-        placeholder="Search for attractions"
-        value={search}
-        onChange={this.onSearchChanged} />
+      <Wrapper>
+        <SearchBox
+          type="text"
+          placeholder="Search for attractions..."
+          value={search}
+          onChange={this.onSearchChanged} />
+      </Wrapper>
     )
   }
 }
 
+const Wrapper = styled.div`
+  text-align: center;
+  width: 100%;
+`
+
 const SearchBox = styled.input`
-  width: 200px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
+  margin: 10px auto;
+  width: 50%;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 15px;
   &:focus {
-    width: 100%;
+    outline: none;
   }
 `
 

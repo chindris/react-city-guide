@@ -25,9 +25,6 @@ const Item = styled.div`
   margin: 5px;
 `;
 
-const Rating = styled.div`
-`;
-
 const Title = styled.h3`
   font: bold 20px Helvetica, Verdana, sans-serif;
 `;
@@ -39,6 +36,9 @@ const Image = styled.img`
 `;
 
 const Summary = styled.p`
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 `
 export default Attraction;

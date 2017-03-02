@@ -10,6 +10,7 @@ const Button = styled.button`
   padding: 8px 15px 8px 15px;
   background: #FF8500;
   color: #fff;
+  font-size: 15px;
   box-shadow: 1px 1px 4px #DADADA;
   -moz-box-shadow: 1px 1px 4px #DADADA;
   -webkit-box-shadow: 1px 1px 4px #DADADA;
