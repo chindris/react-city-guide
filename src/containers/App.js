@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import AttractionsList from './List/AttractionsList';
 import logo from '../logo.svg';
 import TravelMap from './TravelMap';
+import styled from 'styled-components';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <MainContainer>
         <AttractionsList />
         <TravelMap />
-      </div>
+      </MainContainer>
     );
   }
 }
+
+const MainContainer = styled.div`
+  width: 100%;
+`
 
 export default App;

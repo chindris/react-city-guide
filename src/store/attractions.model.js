@@ -4,7 +4,7 @@ const initialState = {
         {
         id: 1,
         title: 'Location 1',
-        description: 'Some description for the location 1',
+        description: 'Some description for the location 1 jfogjofjbjoffoenkbnvojgojgotjhotjhojtohjotjnojotjnjtojnoj',
         rating: 4,
         address: 'Address of location 1',
         location: {
