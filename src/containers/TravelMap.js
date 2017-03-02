@@ -3,6 +3,7 @@ import Map, {Marker, InfoWindow}  from 'google-maps-react';
 import {connect} from 'react-redux';
 import {Reviews} from '../components/Map/reviews';
 import {getFilteredAttractions} from '../selectors/attractions';
+import styled from 'styled-components';
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
 
@@ -55,6 +56,7 @@ export class TravelMap extends Component {
     const selected_attraction_obj= this.getSelectedAttraction(attractions_selected);
 
     return (
+<MapContainer>
       <Map google={this.props.google}
            className={'map'}
             center={selected_attraction_obj? selected_attraction_obj.location : null}
@@ -89,9 +91,15 @@ export class TravelMap extends Component {
           }
         </InfoWindow>
       </Map>
+</MapContainer>
     );
   }
 }
+
+const MapContainer = styled.div`
+  display: inline-block;
+  float: right;
+  width:
 
 const mapStateToProps = (state, ownProps) => {
   console.log("JMOZGAWA: state", state);
