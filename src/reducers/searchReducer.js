@@ -8,7 +8,7 @@ export const searchReducer(state = initialState, action) {
         const value = action.value;
         const filteredAttractions = state.attractions.filter(attraction => {attraction.includes(value)});
         return {
-          const filteredID = filteredAttractions.map(attraction => {attraction.id})
+          const filteredIDs = filteredAttractions.map(attraction => {attraction.id})
         }
       }
     default:
