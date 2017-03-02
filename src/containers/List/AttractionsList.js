@@ -2,15 +2,21 @@ import React from 'react';
 import Attraction from './Attraction';
 import {connect} from 'react-redux';
 
-const AttractionsList = ({attractions}) => (
-  <div>
-    {
-      attractions.map((attraction) => (
-        <Attraction key={attraction.id} attraction={attraction} />
-      ))
-    }
-  </div>
-);
+class AttractionsList extends Component {
+  render() {
+    const attractions = this.props.attractions;
+    return(
+      <div>
+        {
+          attractions.map((attraction) => (
+            <Attraction key={attraction.id} attraction={attraction} />
+          ))
+        }
+      </div>
+    )
+  }
+}
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
