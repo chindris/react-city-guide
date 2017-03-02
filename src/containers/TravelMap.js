@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Map, {Marker, InfoWindow}  from 'google-maps-react';
-import store from '../store/configureStore'
+import {connect} from 'react-redux';
 
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
@@ -11,17 +11,16 @@ export class TravelMap extends Component {
     super(props);
     this.state = {
       showingInfoWindow: false,
-      selectedPlace: {
-        name: ""
-      }
+      selectedAttraction: null,
     };
   }
 
-  getMarkersFromStore = (state) => {
-    return state.attractions.list.map(attraction => {
+  getMarkersFromAttractionList = (list) => {
+    return list.map(attraction => {
       return {
         name: attraction.title,
         position: attraction.location,
+        attractionId: attraction.id
       }
     });
   }
@@ -30,7 +29,8 @@ export class TravelMap extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+      selectedAttraction: this.getSelectedAttraction(props.attractionId)
     });
   }
 
@@ -40,22 +40,30 @@ export class TravelMap extends Component {
     });
   }
 
+  getSelectedAttraction = (id) => {
+    const {attractions} = this.props.store;
+    return attractions.list.find(attraction => attraction.id === id);
+  }
+
   render() {
-    
-    console.log("JMOZGAWA: this", );
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
+
+    const {attractions, selectedAttraction} = this.props.store;
+
+    console.log("JMOZGAWA: this", this);
 
     return (
       <Map google={this.props.google}
            className={'map'}>
         {
-          this.getMarkersFromStore(store.getState()).map(marker =>
+          this.getMarkersFromAttractionList(attractions.list).map(marker =>
 
             <Marker
               name={marker.name}
               position={marker.position}
+              attractionId={marker.attractionId}
               onClick={this.onMarkerClick}
             />
           )
@@ -65,15 +73,27 @@ export class TravelMap extends Component {
           onClose={this.onInfoWindowClose}
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
+          { this.state.selectedAttraction &&
           <div>
-            <h1>{this.state.selectedPlace.name}</h1>
+            <image src={this.state.selectedAttraction.image}/>
+            <h2>{this.state.selectedAttraction.title}</h2>
           </div>
+          }
         </InfoWindow>
       </Map>
     );
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  console.log("JMOZGAWA: state", state);
+  return {
+    store: state
+  }
+}
+
+const ReduxConnectedTravelMap = connect(mapStateToProps)(TravelMap);
+
 export default GoogleApiComponent({
   apiKey: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo"
-})(TravelMap)
+})(ReduxConnectedTravelMap)
