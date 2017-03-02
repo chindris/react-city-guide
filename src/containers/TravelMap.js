@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Map, {Marker, InfoWindow}  from 'google-maps-react';
 import {connect} from 'react-redux';
-
+import {Reviews} from '../components/Map/reviews'
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
 
@@ -50,9 +50,7 @@ export class TravelMap extends Component {
       return <div>Loading...</div>
     }
 
-    const {attractions, selectedAttraction} = this.props.store;
-
-    console.log("JMOZGAWA: this", this);
+    const {attractions} = this.props.store;
 
     return (
       <Map google={this.props.google}
@@ -76,7 +74,10 @@ export class TravelMap extends Component {
           { this.state.selectedAttraction &&
           <div>
             <image src={this.state.selectedAttraction.image}/>
-            <h2>{this.state.selectedAttraction.title}</h2>
+            <h2>{this.state.selectedAttraction.title}<Reviews ratings={
+              this.state.selectedAttraction.reviews.map(review=> review.rating)
+            } /></h2>
+
           </div>
           }
         </InfoWindow>
