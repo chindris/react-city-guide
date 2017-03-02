@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Attraction from './Attraction';
 import {connect} from 'react-redux';
 

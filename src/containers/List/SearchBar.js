@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { search } from './actions/search';
+import { search } from '../../actions/search';
 
 class SearchBar extends Component {
   render() {
@@ -22,13 +21,8 @@ class SearchBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    attractions: state.attractions;
+    attractions: state.attractions
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({search}, dispatch);
-}
-//dispatch somewhere else
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps)(SearchBar);
