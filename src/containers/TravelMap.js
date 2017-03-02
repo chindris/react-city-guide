@@ -78,6 +78,8 @@ export class TravelMap extends Component {
             <h2>{this.state.selectedAttraction.title}<Reviews ratings={
               this.state.selectedAttraction.reviews.map(review=> review.rating)
             } /></h2>
+            <h3>{this.state.selectedAttraction.address}</h3>
+            <p>{this.state.selectedAttraction.description}</p>
 
           </div>
           }
