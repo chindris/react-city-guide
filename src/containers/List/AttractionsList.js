@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Attraction from '../../components/List/Attraction';
 import {connect} from 'react-redux';
 import {attractionsSelectedSet} from '../../actions/attractions_selected';
+import {getFilteredAttractions} from './selectors/attractions';
 
 class AttractionsList extends Component {
   setSelectedAttraction = (attractionId) => {
@@ -31,7 +32,7 @@ class AttractionsList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    attractions: state.attractions.list,
+    attractions: getFilteredAttractions(state),
     selectedAttraction: state.attractions_selected
   }
 }
