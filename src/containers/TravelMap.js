@@ -5,26 +5,6 @@ import store from '../store/configureStore'
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
 
-
-const mockedMarkers = [
-  {
-    name: 'Dolores park',
-    position: {
-      lat: 37.759703,
-      lng: -122.428093
-    }
-  },
-  {
-    name: 'SOMA',
-    position: {
-      lat: 37.778519,
-      lng: -122.405640
-    }
-  },
-
-]
-
-
 export class TravelMap extends Component {
 
   constructor(props) {
@@ -38,7 +18,7 @@ export class TravelMap extends Component {
   }
 
   getMarkersFromStore = (state) => {
-    return state.attractions.map(attraction => {
+    return state.attractions.list.map(attraction => {
       return {
         name: attraction.title,
         position: attraction.location,
