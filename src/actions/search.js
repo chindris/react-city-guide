@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+export const SEARCH_TEXT = 'SEARCH_TEXT';
 
-export function search(value) {
+
+export const searchText = (value) => {
   return {
-    type: 'SEARCH',
+    type: SEARCH_TEXT,
     value,
   }
 }

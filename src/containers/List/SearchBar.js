@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { search } from '../../actions/search';
+import { searchText } from '../../actions/search';
 
 class SearchBar extends Component {
-  render() {
-    const search = this.props.search;
-    const value = this.props.value;
+  onSearchChanged = (e) => {
+    const {dispatch} = this.props;
+    dispatch(searchText(e.target.value));
+  }
 
+  render() {
+    const {search} = this.props;
     return (
       <input
         type="text"
-        className="form-control"
         placeholder="Search for attractions"
-        value={value}
-        onChange={(event) => search(event.target.value)} />
+        value={search}
+        onChange={this.onSearchChanged} />
     )
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    attractions: state.attractions
+    search: state.search
   }
 }
 
