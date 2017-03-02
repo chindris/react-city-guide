@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Attraction from '../../components/List/Attraction';
 import {connect} from 'react-redux';
 import {attractionsSelectedSet} from '../../actions/attractions_selected';
-import {getFilteredAttractions} from './selectors/attractions';
+import {getFilteredAttractions} from '../../selectors/attractions';
 
 class AttractionsList extends Component {
   setSelectedAttraction = (attractionId) => {

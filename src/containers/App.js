@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <SearchBar />
         <AttractionsList />
-        {/* <TravelMap /><br /> */}
+         <TravelMap /><br />
         {/* search bar need to be in header */}
       </div>
     );
