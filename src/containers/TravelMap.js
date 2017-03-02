@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Map, {Marker}  from 'google-maps-react';
+import Map, {Marker, InfoWindow}  from 'google-maps-react';
 import store from '../store/configureStore'
 
 
@@ -27,14 +27,42 @@ const mockedMarkers = [
 
 export class TravelMap extends Component {
 
-  getMarkersFromStore = (state)=> {
-    return state.attractions.map(attraction=>{ return {
-      name: attraction.title,
-      position: attraction.location,
-    }});
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      selectedPlace: {
+        name: ""
+      }
+    };
+  }
+
+  getMarkersFromStore = (state) => {
+    return state.attractions.map(attraction => {
+      return {
+        name: attraction.title,
+        position: attraction.location,
+      }
+    });
+  }
+
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+
+  onInfoWindowClose = () => {
+    this.setState({
+      showingInfoWindow: false
+    });
   }
 
   render() {
+    
+    console.log("JMOZGAWA: this", );
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
@@ -45,9 +73,22 @@ export class TravelMap extends Component {
         {
           this.getMarkersFromStore(store.getState()).map(marker =>
 
-            <Marker name={marker.name} position={marker.position} />
+            <Marker
+              name={marker.name}
+              position={marker.position}
+              onClick={this.onMarkerClick}
+            />
           )
         }
+
+        <InfoWindow
+          onClose={this.onInfoWindowClose}
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+          <div>
+            <h1>{this.state.selectedPlace.name}</h1>
+          </div>
+        </InfoWindow>
       </Map>
     );
   }
