@@ -53,45 +53,48 @@ export class TravelMap extends Component {
     }
 
     const {attractions, attractions_selected} = this.props;
-    const selected_attraction_obj= this.getSelectedAttraction(attractions_selected);
+    const selected_attraction_obj = this.getSelectedAttraction(attractions_selected);
 
     return (
-<MapContainer>
-      <Map google={this.props.google}
-           className={'map'}
-            center={selected_attraction_obj? selected_attraction_obj.location : null}
-      >
-        {
-          this.getMarkersFromAttractionList(attractions).map(marker =>
+      <MapContainer>
+        <Map google={this.props.google}
+             className={'map'}
+             center={selected_attraction_obj ? selected_attraction_obj.location : null}
+        >
+          {
+            this.getMarkersFromAttractionList(attractions).map(marker =>
 
-            <Marker
-              name={marker.name}
-              position={marker.position}
-              attractionId={marker.attractionId}
-              onClick={this.onMarkerClick}
-            />
-          )
-        }
-
-        <InfoWindow
-          onClose={this.onInfoWindowClose}
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-          { this.state.selectedAttraction &&
-          <div>
-            <image src={this.state.selectedAttraction.image}/>
-            <h2>{this.state.selectedAttraction.title}<Reviews ratings={
-              this.state.selectedAttraction.reviews.map(review=> review.rating)
-            } /></h2>
-            <h3>{this.state.selectedAttraction.address}</h3>
-            <p>{this.state.selectedAttraction.description}</p>
-            <button onClick={()=> {console.log("JMOZGAWA: ")}}>Details</button>
-
-          </div>
+              <Marker
+                name={marker.name}
+                position={marker.position}
+                attractionId={marker.attractionId}
+                onClick={this.onMarkerClick}
+              />
+            )
           }
-        </InfoWindow>
-      </Map>
-</MapContainer>
+
+          <InfoWindow
+            onClose={this.onInfoWindowClose}
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
+            { this.state.selectedAttraction &&
+            <div>
+              <image src={this.state.selectedAttraction.image}/>
+              <h2>{this.state.selectedAttraction.title}<Reviews ratings={
+                this.state.selectedAttraction.reviews.map(review => review.rating)
+              }/></h2>
+              <h3>{this.state.selectedAttraction.address}</h3>
+              <p>{this.state.selectedAttraction.description}</p>
+              <button onClick={() => {
+                console.log("JMOZGAWA: ")
+              }}>Details
+              </button>
+
+            </div>
+            }
+          </InfoWindow>
+        </Map>
+      </MapContainer>
     );
   }
 }
@@ -99,7 +102,8 @@ export class TravelMap extends Component {
 const MapContainer = styled.div`
   display: inline-block;
   float: right;
-  width:
+  width:50%
+`
 
 const mapStateToProps = (state, ownProps) => {
   console.log("JMOZGAWA: state", state);
