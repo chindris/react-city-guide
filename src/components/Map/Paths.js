@@ -55,7 +55,11 @@ export class Paths extends Component {
   }
 
   render() {
-    this.displayRoute(this.props.flightPlanCoordinates);
+    if (this.props.visible) {
+      this.displayRoute(this.props.flightPlanCoordinates);
+    } else if(this.flightPath) {
+      this.flightPath.setMap(null);
+    }
     return null;
   }
 }

@@ -64,21 +64,19 @@ export class TravelMap extends Component {
     }
 
 
-
-
     const {attractions, attractions_selected} = this.props;
+    console.log("JMOZGAWA: this.props",this.props);
+    const showPath = !!this.props.tours_selected && this.props.category === 'tours';
     const selected_attraction_obj = this.getSelectedAttraction(attractions_selected);
 
     const attraction = this.getSelectedAttraction(this.state.selectedAttraction);
-
-
 
     return (
       <MapContainer>
         <CustomMap google={this.props.google}
                    mapType="terrain"
-             center={selected_attraction_obj ? selected_attraction_obj.location : null}
-             onReady={this.onMapReady}
+                   center={selected_attraction_obj ? selected_attraction_obj.location : null}
+                   onReady={this.onMapReady}
         >
           {
             this.getMarkersFromAttractionList(attractions).map(marker =>
@@ -110,10 +108,15 @@ export class TravelMap extends Component {
             </div>
             }
           </InfoWindow>
-          <Paths map={this.props.map} flightPlanCoordinates={this.getMarkersFromAttractionList(attractions).map(attraction => attraction.position)}/>
+          <Paths map={this.props.map}
+                            flightPlanCoordinates={this.getMarkersFromAttractionList(attractions).map(attraction => attraction.position)}
+                  visible={showPath}
+          />
         </CustomMap>
       </MapContainer>
     );
+
+console.log("JMOZGAWA: tours_selected",showPath);
   }
 }
 
@@ -129,9 +132,12 @@ const MapContainer = styled.div`
 `;
 
 const mapStateToProps = (state, ownProps) => {
+  console.log("JMOZGAWA: state", state);
   return {
     attractions: getAttractionsForMap(state),
     attractions_selected: state.attractions_selected,
+    tours_selected: state.tours_selected,
+    category: state.filters.category.value,
   }
 }
 
