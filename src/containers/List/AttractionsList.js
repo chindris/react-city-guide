@@ -14,7 +14,7 @@ class AttractionsList extends Component {
   render() {
     const {attractions, selectedAttraction} = this.props;
     return (
-      <div>
+      <Wrapper>
         <ListContainer>
           {
             attractions.map((attraction) => (
@@ -29,10 +29,16 @@ class AttractionsList extends Component {
             ))
           }
         </ListContainer>
-      </div>
+      </Wrapper>
     )
   }
 };
+
+const Wrapper = styled.div`
+  float: left;
+  width: 50%;
+  display: inline-block;
+`
 
 const List = styled.li`
   padding: 10px;
@@ -49,11 +55,11 @@ const List = styled.li`
 
 const ListContainer = styled.ul`
   display: inline-block;
-  width: 50%;
-  float: left;
   padding: 0;
   z-index: 100;
   background-color: #f0f0f0;
+  height: 100%;
+  width: 100%;
 `
 
 const mapStateToProps = (state, ownProps) => {

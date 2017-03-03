@@ -13,17 +13,30 @@ class App extends Component {
     return (
       <MainContainer>
         <Header />
-        {
-          (category === 'attractions' && <AttractionsList />) || null
-        }
-        {
-          (category === 'tours' && <ToursList />) || null
-        }
-        <TravelMap />
+        <Wrapper>
+          {
+            (category === 'attractions' && <AttractionsList />) || null
+          }
+          {
+            (category === 'tours' && <ToursList />) || null
+          }
+          <TravelMap />
+        </Wrapper>
       </MainContainer>
     );
   }
 }
+
+const Wrapper = styled.div`
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+`
 
 const MainContainer = styled.div`
   width: 100%;

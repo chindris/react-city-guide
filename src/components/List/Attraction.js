@@ -30,7 +30,7 @@ const Title = styled.h3`
 `;
 const Image = styled.img`
   float: left;
-  height: px;
+  height: 100px;
   width: 100px;
   margin-right: 10px;
 `;
