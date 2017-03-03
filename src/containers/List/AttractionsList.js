@@ -18,9 +18,8 @@ class AttractionsList extends Component {
         <ListContainer>
           {
             attractions.map((attraction) => (
-              <List>
+              <List key={attraction.id}>
                 <Attraction
-                  key={attraction.id}
                   attraction={attraction}
                   onAttractionSeleced={this.setSelectedAttraction}
                   isSelected={attraction.id === selectedAttraction}

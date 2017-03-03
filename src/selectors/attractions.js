@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
+import {getSearchedValue} from './search';
 
 export const getAttractions = (state) => state.attractions.list;
-export const getSearchedValue = (state) => state.search;
 export const getRatingFilter = (state) => state.filters && state.filters.rating ? state.filters.rating : {};
 
 export const getFilteredByRatingAttractions = createSelector(
@@ -30,3 +30,12 @@ export const getFilteredAttractions = createSelector(
     });
   }
 );
+
+export const getAttractionById = (attractions, id) => {
+  for (var i = 0; i < attractions.length; i++) {
+    if (attractions[i].id === id) {
+      return attractions[i];
+    }
+  }
+  return null;
+}

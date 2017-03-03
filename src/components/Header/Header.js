@@ -3,10 +3,12 @@ import SearchBar from '../../containers/Header/SearchBar';
 import RatingFilter from '../../containers/Filter/RatingFilter';
 import CategoryFilter from '../../containers/Filter/CategoryFilter';
 
-const Header = () => (
+const Header = (props) => (
   <div>
-    <SearchBar />
-    <RatingFilter />
+    <SearchBar category={props.category} />
+    {
+      (props.category === 'attractions' && <RatingFilter />) || null
+    }
     <CategoryFilter />
   </div>
 );

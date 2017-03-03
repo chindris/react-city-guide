@@ -1,0 +1,1 @@
+export const getSearchedValue = (state) => state.search;

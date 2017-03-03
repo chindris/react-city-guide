@@ -12,16 +12,14 @@ class App extends Component {
     const {category} = this.props;
     return (
       <MainContainer>
-        <Header />
-        <Wrapper>
-          {
-            (category === 'attractions' && <AttractionsList />) || null
-          }
-          {
-            (category === 'tours' && <ToursList />) || null
-          }
-          <TravelMap />
-        </Wrapper>
+        <Header category={category} />
+        {
+          (category === 'attractions' && <AttractionsList />) || null
+        }
+        {
+          (category === 'tours' && <ToursList />) || null
+        }
+        <TravelMap />
       </MainContainer>
     );
   }

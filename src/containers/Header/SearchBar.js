@@ -10,12 +10,13 @@ class SearchBar extends Component {
   }
 
   render() {
-    const {search} = this.props;
+    const {search, category} = this.props;
+    const placeholderText = category === 'tours' ? 'Search for tours...' : 'Search for attractions...';
     return (
       <Wrapper>
         <SearchBox
           type="text"
-          placeholder="Search for attractions..."
+          placeholder={placeholderText}
           value={search}
           onChange={this.onSearchChanged} />
       </Wrapper>

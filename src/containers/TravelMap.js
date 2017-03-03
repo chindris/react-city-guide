@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Map, {Marker, InfoWindow}  from 'google-maps-react';
 import {connect} from 'react-redux';
 import {Reviews} from '../components/Map/reviews';
-import {getFilteredAttractions} from '../selectors/attractions';
+import {getAttractionsForMap} from '../selectors/map';
 import styled from 'styled-components';
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
@@ -114,7 +114,7 @@ const MapContainer = styled.div`
 const mapStateToProps = (state, ownProps) => {
   console.log("JMOZGAWA: state", state);
   return {
-    attractions: getFilteredAttractions(state),
+    attractions: getAttractionsForMap(state),
     attractions_selected: state.attractions_selected,
   }
 }

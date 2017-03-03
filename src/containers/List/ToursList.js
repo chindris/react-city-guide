@@ -2,11 +2,18 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import Tour from '../../components/List/Tour';
+import {getFilteredTours, getSelectedTour} from '../../selectors/tours';
+import {toursSelectedSet} from '../../actions/tours_selected';
 
 class ToursList extends Component {
 
+  setSelectedTour = (tourId) => {
+    const {dispatch} = this.props;
+    dispatch(toursSelectedSet(tourId));
+  }
+
   render() {
-    const {tours} = this.props;
+    const {tours, selectedTour} = this.props;
     return (
       <div>
         <ListContainer>
@@ -15,6 +22,8 @@ class ToursList extends Component {
               <List key={tour.id}>
                 <Tour
                   tour={tour}
+                  onTourSelected={this.setSelectedTour}
+                  isSelected={tour.id === selectedTour}
                 />
               </List>
             ))
@@ -49,7 +58,8 @@ const ListContainer = styled.ul`
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    tours: state.tours.list,
+    tours: getFilteredTours(state),
+    selectedTour: getSelectedTour(state),
   }
 }
 
