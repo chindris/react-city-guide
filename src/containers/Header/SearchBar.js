@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { searchText } from '../../actions/search';
+import CategoryFilter from '../../containers/Filter/CategoryFilter';
 
 class SearchBar extends Component {
   onSearchChanged = (e) => {
@@ -19,6 +20,9 @@ class SearchBar extends Component {
           placeholder={placeholderText}
           value={search}
           onChange={this.onSearchChanged} />
+        <FilterWrapper>
+          <CategoryFilter />
+        </FilterWrapper>
       </Wrapper>
     )
   }
@@ -31,13 +35,17 @@ const Wrapper = styled.div`
 
 const SearchBox = styled.input`
   margin: 10px auto;
-  width: 50%;
+  width: 30%;
   padding: 15px;
   border-radius: 5px;
   font-size: 15px;
   &:focus {
     outline: none;
   }
+`
+
+const FilterWrapper = styled.div`
+  display: inline-block;
 `
 
 const mapStateToProps = (state) => {
