@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Reviews from '../components/Map/reviews';
 import {getAttractionsForMap} from '../selectors/map';
 import styled from 'styled-components';
+import Paths from '../components/Map/Paths';
 
 import GoogleApiComponent from '../libs/GoogleApiComponent';
 
@@ -52,14 +53,20 @@ export class TravelMap extends Component {
       return <div>Loading...</div>
     }
 
+
+
+
     const {attractions, attractions_selected} = this.props;
     const selected_attraction_obj = this.getSelectedAttraction(attractions_selected);
 
     const attraction = this.getSelectedAttraction(this.state.selectedAttraction);
 
+
+
     return (
       <MapContainer>
         <CustomMap google={this.props.google}
+                   mapType="terrain"
              center={selected_attraction_obj ? selected_attraction_obj.location : null}
         >
           {
@@ -92,6 +99,7 @@ export class TravelMap extends Component {
             </div>
             }
           </InfoWindow>
+          <Paths map={this.props.map} flightPlanCoordinates={this.getMarkersFromAttractionList(attractions).map(attraction => attraction.position)}/>
         </CustomMap>
       </MapContainer>
     );
