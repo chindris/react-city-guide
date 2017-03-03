@@ -8,5 +8,6 @@ export default combineReducers({
   attractions_selected,
   attractions,
   search,
-  filters
+  filters,
+  tours: (state = '') => { return state},
 })
