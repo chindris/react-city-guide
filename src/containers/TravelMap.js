@@ -47,6 +47,16 @@ export class TravelMap extends Component {
     return attractions.find(attraction => attraction.id === id);
   }
 
+  onMapReady = (mapProps, map) => {
+    const {attractions, google} = this.props;
+    const markers = this.getMarkersFromAttractionList(attractions);
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].position);
+    }
+    map.fitBounds(bounds);
+  }
+
   render() {
     if (!this.props.loaded) {
       return <div>Loading...</div>
@@ -61,11 +71,13 @@ export class TravelMap extends Component {
       <MapContainer>
         <CustomMap google={this.props.google}
              center={selected_attraction_obj ? selected_attraction_obj.location : null}
+             onReady={this.onMapReady}
         >
           {
             this.getMarkersFromAttractionList(attractions).map(marker =>
 
               <Marker
+                key={marker.name}
                 name={marker.name}
                 position={marker.position}
                 attractionId={marker.attractionId}
