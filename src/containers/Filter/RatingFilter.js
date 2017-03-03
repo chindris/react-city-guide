@@ -7,7 +7,7 @@ const withRatingStars = (Component, starsNr) => (props) => {
   return (
     <label>
       <input type="checkbox" value={starsNr} onChange={props.onRatingFilterChange} checked={props.selected}/>
-      <Component value={starsNr} starCount={starsNr} {...props} />
+      <Component value={starsNr} starCount={starsNr} {...props} editing={false}/>
     </label>
 )};
 
@@ -21,13 +21,9 @@ class RatingFilter extends Component {
 
   onRatingFilterChange = (e) => {
     const {dispatch, rating} = this.props;
-    console.log(rating);
-    if (!!rating[e.target.value]) {
-      dispatch(filtersRemove('rating', e.target.value));
-    }
-    else {
+    (!!rating[e.target.value]) ?
+      dispatch(filtersRemove('rating', e.target.value)) :
       dispatch(filtersSet('rating', e.target.value, 1));
-    }
   }
   
   render() {
