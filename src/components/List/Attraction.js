@@ -4,21 +4,23 @@ import styled from 'styled-components';
 import StarRatingComponent from 'react-star-rating-component';
 
 const Attraction = ({attraction, isSelected, onAttractionSeleced}) => (
-  <Item onClick={() => onAttractionSeleced(attraction.id)}>
-    <Image src={attraction.image} />
-    <div>
-      <Title>{attraction.title}</Title>
-      <StarRatingComponent
-        value={attraction.rating}
-        name={`attraction-rating-${attraction.id}`}
-        starCount={5}
-        editing={false} />
-      <Summary>{attraction.description}</Summary>
-    </div>
+  <div>
+    <Item onClick={() => onAttractionSeleced(attraction.id)}>
+      <Image src={attraction.image} />
+      <div>
+        <Title>{attraction.title}</Title>
+        <StarRatingComponent
+          value={attraction.rating}
+          name={`attraction-rating-${attraction.id}`}
+          starCount={5}
+          editing={false} />
+        <Summary>{attraction.description}</Summary>
+      </div>
+    </Item>
     {
       (isSelected && <AttractionDetails attraction={attraction} />) || null
     }
-  </Item>
+  </div>
 );
 
 const Item = styled.div`

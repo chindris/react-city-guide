@@ -19,7 +19,7 @@ class ToursList extends Component {
         <ListContainer>
           {
             tours.map((tour) => (
-              <List key={tour.id}>
+              <List key={tour.id} isSelected={tour.id === selectedTour}>
                 <Tour
                   tour={tour}
                   onTourSelected={this.setSelectedTour}
@@ -40,7 +40,7 @@ const List = styled.li`
   overflow: auto;
   list-style: none;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: ${props => props.isSelected ? '#eee' : '#ffffff'};
   &:hover {
     background: #eee;
     cursor: pointer;

@@ -7,8 +7,8 @@ import {getFilteredAttractions} from '../../selectors/attractions';
 
 class AttractionsList extends Component {
   setSelectedAttraction = (attractionId) => {
-    const {dispatch} = this.props;
-    dispatch(attractionsSelectedSet(attractionId));
+    const {dispatch, selectedAttraction} = this.props;
+    selectedAttraction === attractionId ? dispatch(attractionsSelectedSet(null)) : dispatch(attractionsSelectedSet(attractionId));
   }
 
   render() {
