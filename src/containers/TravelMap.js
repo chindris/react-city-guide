@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Map, {Marker, InfoWindow}  from 'google-maps-react';
 import {connect} from 'react-redux';
-import Reviews from '../components/Map/Reviews';
+import Reviews from '../components/Map/reviews';
 import {getAttractionsForMap} from '../selectors/map';
 import styled from 'styled-components';
 
