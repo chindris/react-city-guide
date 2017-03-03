@@ -12,7 +12,7 @@ class App extends Component {
     const {category} = this.props;
     return (
       <MainContainer>
-        <Header />
+        <Header category={category} />
         {
           (category === 'attractions' && <AttractionsList />) || null
         }

@@ -7,7 +7,6 @@ class CategoryFilter extends Component {
 
   onCategoryFilterChange = (e) => {
     const {dispatch} = this.props;
-    console.log(e.target.value);
     dispatch(filtersSet('category', 'value', e.target.value));
   }
   

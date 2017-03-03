@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Tour = ({tour}) => (
-  <Item>
+const Tour = ({tour, onTourSelected}) => (
+  <Item onClick={() => onTourSelected(tour.id)}>
     <Image src={tour.image} />
     <div>
       <Title>{tour.title}</Title>
       <Summary>{tour.description}</Summary>
     </div>
   </Item>
-);
+)
 
 const Item = styled.div`
   margin: 5px;
