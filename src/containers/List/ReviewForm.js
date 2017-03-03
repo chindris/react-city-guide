@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import RatingWidget from '../../components/Forms/RatingWidget';
 import CommentInput from '../../components/Forms/CommentInput';
 import SubmitButton from '../../components/Forms/SubmitButton';
-import {attractionsAddReview} from '../../actions/attractions';
+import {attractionsAddReview, attractionsUpdateRating} from '../../actions/attractions';
 import {connect} from 'react-redux';
 
 class ReviewForm extends Component {
@@ -20,6 +20,7 @@ class ReviewForm extends Component {
       rating: 1,
       text: '',
     });
+    dispatch(attractionsUpdateRating(attractionId));
 
     e.preventDefault();
   }

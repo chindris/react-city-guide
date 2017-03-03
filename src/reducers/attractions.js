@@ -1,4 +1,5 @@
 import {ATTRACTIONS_ADD_REVIEW} from '../actions/attractions';
+import {ATTRACTIONS_UPDATE_RATING} from '../actions/attractions';
 
 const attractions = (state = null, action) => {
   switch (action.type) {
@@ -19,6 +20,23 @@ const attractions = (state = null, action) => {
               rating: action.rating,
               text: action.text,
             }]
+          }
+        })
+      }
+    }
+    case ATTRACTIONS_UPDATE_RATING: {
+      return {
+        ...state,
+        list: state.list.map((attraction) => {
+          if (attraction.id !== action.attractionId) {
+            return attraction;
+          }
+
+          const sumRating = attraction.reviews && attraction.reviews.length > 0 ? attraction.reviews.reduce((a, b) => {return {rating: a.rating + b.rating}}) : {rating: 0};
+          const avgRating = sumRating.rating / attraction.reviews.length;
+          return {
+            ...attraction,
+            rating: avgRating,
           }
         })
       }

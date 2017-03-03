@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Map, {Marker, InfoWindow}  from 'google-maps-react';
 import {connect} from 'react-redux';
-import {Reviews} from '../components/Map/reviews';
+import Reviews from '../components/Map/Reviews';
 import {getAttractionsForMap} from '../selectors/map';
 import styled from 'styled-components';
 
@@ -81,9 +81,7 @@ export class TravelMap extends Component {
             { attraction &&
             <div>
               <image src={attraction.image}/>
-              <h2>{attraction.title}<Reviews ratings={
-                attraction.reviews.map(review => review.rating)
-              }/></h2>
+              <h2>{attraction.title}<Reviews rating={attraction.rating} name={`attraction-map-${attraction.id}`}/></h2>
               <h3>{attraction.address}</h3>
               <p>{attraction.description}</p>
               <button onClick={() => {
