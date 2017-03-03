@@ -147,23 +147,23 @@ const initialState = {
     list: [
       {
         id: 1,
-        title: 'The first tour',
-        description: 'This is the first tour',
-        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        title: 'Bus Tour',
+        description: 'This is best bus tour in town.',
+        image: 'http://thedestinationcenter.com/images/tourimages/SanFrancisco/Bus_NorthBeach4.jpg',
         attractions: [1, 2],
       },
       {
         id: 2,
-        title: 'The secoud tour',
-        description: 'This is the second tour',
-        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        title: 'Walking Tour',
+        description: 'Walking around town with like-minded, friendly people.',
+        image: 'https://www.fattiretours.com/uploads/249/Classic-Walk-Hero.jpg',
         attractions: [1, 3, 4],
       },
       {
         id: 3,
-        title: 'The secoud tour',
-        description: 'This is the second tour',
-        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        title: 'The Historic Tour',
+        description: 'Learn all about this historic city.',
+        image: 'http://www.oldsavannahtours.com/wp-content/uploads/Trolley-925-at-Mercer-House-430x225.jpg',
         attractions: [5, 6, 7, 8],
       }
     ]
