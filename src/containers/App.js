@@ -21,7 +21,7 @@ class App extends Component {
             (category === 'tours' && <ToursList />) || null
           }
           <TravelMap />
-        </ Wrapper>
+        </Wrapper>
       </MainContainer>
     );
   }
