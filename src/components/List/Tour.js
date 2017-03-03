@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Tour = ({tour, onTourSelected}) => (
+const Tour = ({tour, onTourSelected, isSelected}) => (
   <Item onClick={() => onTourSelected(tour.id)}>
     <Image src={tour.image} />
     <div>
