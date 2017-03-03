@@ -25,6 +25,17 @@ class App extends Component {
   }
 }
 
+const Wrapper = styled.div`
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+`
+
 const MainContainer = styled.div`
   width: 100%;
 `

@@ -59,8 +59,7 @@ export class TravelMap extends Component {
 
     return (
       <MapContainer>
-        <Map google={this.props.google}
-             className={'map'}
+        <CustomMap google={this.props.google}
              center={selected_attraction_obj ? selected_attraction_obj.location : null}
         >
           {
@@ -95,17 +94,22 @@ export class TravelMap extends Component {
             </div>
             }
           </InfoWindow>
-        </Map>
+        </CustomMap>
       </MapContainer>
     );
   }
 }
 
-const MapContainer = styled.div`
-  display: inline-block;
-  float: right;
-  width:50%
+const CustomMap = styled(Map)`
+  position: relative;
+  width: 50%!important;
 `
+
+const MapContainer = styled.div`
+  display: block;
+  float: right;
+  width: 50%;
+`;
 
 const mapStateToProps = (state, ownProps) => {
   console.log("JMOZGAWA: state", state);
