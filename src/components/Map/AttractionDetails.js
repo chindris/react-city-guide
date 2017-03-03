@@ -6,7 +6,6 @@ export class AttractionDetails extends Component {
 
   render() {
     const { address, description, reviews, title, image}= this.props;
-    console.log("JMOZGAWA: this",this);
 
     return (
         <div>

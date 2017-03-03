@@ -15,7 +15,7 @@ export class Paths extends Component {
 
   displayRoute = (route) => {
 
-    const waypoints = route.length > 2 ? route.slice(1, route.length - 2).map((point) => {
+    const waypoints = route.length > 2 ? route.slice(1, route.length - 1).map((point) => {
       return {
         location: point,
         stopover: true
@@ -30,23 +30,22 @@ export class Paths extends Component {
       avoidTolls: true
     }, (response, status) => {
       if (status === 'OK') {
-        console.log("JMOZGAWA: response", response);
         this.directionsDisplay.setDirections(response);
 
         const path = response.routes[0].overview_path;
         //
-        var flightPath = new window.google.maps.Polyline({
+        if(this.flightPath) {
+          this.flightPath.setMap(null);
+        }
+
+        this.flightPath = new window.google.maps.Polyline({
           path: path,
           strokeColor: "#FF0000",
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
 
-
-        console.log("JMOZGAWA: flightPlanCoordinates", this.props.flightPlanCoordinates);
-
-
-        flightPath.setMap(this.props.map);
+        this.flightPath.setMap(this.props.map);
 
 
       } else {
@@ -56,11 +55,7 @@ export class Paths extends Component {
   }
 
   render() {
-    console.log("JMOZGAWA: this", this);
-
     this.displayRoute(this.props.flightPlanCoordinates);
-
-
     return null;
   }
 }

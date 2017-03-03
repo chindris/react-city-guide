@@ -92,7 +92,6 @@ export class TravelMap extends Component {
               <h3>{attraction.address}</h3>
               <p>{attraction.description}</p>
               <button onClick={() => {
-                console.log("JMOZGAWA: ")
               }}>Details
               </button>
 
@@ -118,7 +117,6 @@ const MapContainer = styled.div`
 `;
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("JMOZGAWA: state", state);
   return {
     attractions: getAttractionsForMap(state),
     attractions_selected: state.attractions_selected,

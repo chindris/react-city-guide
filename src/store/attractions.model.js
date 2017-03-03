@@ -157,7 +157,7 @@ const initialState = {
         title: 'Walking Tour',
         description: 'Walking around town with like-minded, friendly people.',
         image: 'https://www.fattiretours.com/uploads/249/Classic-Walk-Hero.jpg',
-        attractions: [1, 3, 4],
+        attractions: [1, 3, 4, 1],
       },
       {
         id: 3,
