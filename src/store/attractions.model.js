@@ -10,8 +10,8 @@ const initialState = {
         rating: 4,
         address: 'Filbert St & Stockton St., San Francisco, CA 94133, USA',
         location: {
-          lat: 37.778519,
-          lng: -122.405640
+          lat: 37.8008515,
+          lng: -122.4121678
         },
         image: 'http://sfrecpark.org/wp-content/uploads/washington-square-586x286.jpg',
         reviews: [
@@ -37,8 +37,8 @@ const initialState = {
         rating: 3,
         address: 'Pier 7 The Embarcadero, San Francisco, CA 94111, Embarcadero, SoMa, South Beach',
         location: {
-          lat: 37.759703,
-          lng: -122.428093
+          lat: 37.7993643,
+          lng: -122.3995737
         },
         image: 'http://stockarch.com/files/12/06/san_francisco_waterfront.jpg',
         reviews: []
@@ -54,8 +54,8 @@ const initialState = {
         rating: 4,
         address: 'Off Of Van Ness, San Francisco, CA 94118',
         location: {
-          lat: 37.739703,
-          lng: -122.428093
+          lat: 37.7778616,
+          lng: -122.4222351
         },
         image: 'http://farm3.static.flickr.com/2579/3952254348_08f832a931.jpg',
         reviews: []
@@ -72,8 +72,8 @@ const initialState = {
         rating: 1,
         address: '333 Post St, San Francisco, CA 94108, USA',
         location: {
-          lat: 37.759703,
-          lng: -122.498093
+          lat: 37.7879426,
+          lng: -122.4096943
         },
         image: 'http://dguides.com/images/sanfrancisco/shopping/union-square.jpg',
         reviews: []
@@ -88,8 +88,8 @@ const initialState = {
         rating: 1,
         address: 'Grant Avenue, San Francisco, CA 94108',
         location: {
-          lat: 37.759703,
-          lng: -122.498093
+          lat: 37.7921052,
+          lng: -122.4080749
         },
         image: 'http://yourbigtour.com/wp-content/uploads/2014/12/bt013-Chinatown-San-Francisco.jpg',
         reviews: []
@@ -103,8 +103,8 @@ const initialState = {
         rating: 1,
         address: '501 Stanyan St, San Francisco, CA 94117-1898',
         location: {
-          lat: 37.759703,
-          lng: -122.498093
+          lat: 37.769425,
+          lng: -122.4884025
         },
         image: 'http://californiahwc.altervista.org/slider/images/Golgen_Gate_Park_San_Francisco/img2L.jpg',
         reviews: []
@@ -119,8 +119,8 @@ const initialState = {
         rating: 1,
         address: 'Steiner St Hayes St, San Francisco, CA 94115',
         location: {
-          lat: 37.759703,
-          lng: -122.498093
+          lat: 37.7777489,
+          lng: -122.4355421
         },
         image: 'https://sfbay.ca/home/wp-content/uploads/2013/08/alamo.jpg',
         reviews: []
@@ -134,8 +134,8 @@ const initialState = {
         rating: 1,
         address: '3301 Lyon St, San Francisco, CA 94123, USA',
         location: {
-          lat: 37.759703,
-          lng: -122.498093
+          lat: 37.8020687,
+          lng: -122.4509549
         },
         image: 'https://p931z2nb6eo1jytzj2ufrzyoiz-wpengine.netdna-ssl.com/arts/wp-content/uploads/sites/2/2015/11/Palace_of_Fine_Artsatnight.jpg',
         reviews: []
@@ -164,7 +164,7 @@ const initialState = {
         title: 'The Historic Tour',
         description: 'Learn all about this historic city.',
         image: 'http://www.oldsavannahtours.com/wp-content/uploads/Trolley-925-at-Mercer-House-430x225.jpg',
-        attractions: [1, 3, 7],
+        attractions: [5, 6, 7, 8],
       }
     ]
   },
