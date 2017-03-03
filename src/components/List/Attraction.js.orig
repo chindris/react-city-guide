@@ -1,20 +1,24 @@
 import React from 'react';
 import AttractionDetails from './AttractionDetails';
+<<<<<<< HEAD
 import styled from 'styled-components';
-import StarRatingComponent from 'react-star-rating-component';
 
 const Attraction = ({attraction, isSelected, onAttractionSeleced}) => (
   <Item onClick={() => onAttractionSeleced(attraction.id)}>
     <Image src={attraction.image} />
     <div>
       <Title>{attraction.title}</Title>
-      <StarRatingComponent
-        value={attraction.rating}
-        name={`attraction-rating-${attraction.id}`}
-        starCount={5}
-        editing={false} />
+      <Rating>{attraction.rating}</Rating>
       <Summary>{attraction.description}</Summary>
     </div>
+=======
+import StarRatingComponent from 'react-star-rating-component';
+
+const Attraction = ({attraction, isSelected, onAttractionSeleced}) => (
+  <div onClick={() => onAttractionSeleced(attraction.id)}>
+    <div>{attraction.title}</div>
+    <div>Rating: <StarRatingComponent value={attraction.rating} name={`attraction-rating-${attraction.id}`} starCount={5} editing={false} /></div>
+>>>>>>> origin/star-rating
     {
       (isSelected && <AttractionDetails attraction={attraction} />) || null
     }
@@ -23,6 +27,9 @@ const Attraction = ({attraction, isSelected, onAttractionSeleced}) => (
 
 const Item = styled.div`
   margin: 5px;
+`;
+
+const Rating = styled.div`
 `;
 
 const Title = styled.h3`
@@ -36,9 +43,6 @@ const Image = styled.img`
 `;
 
 const Summary = styled.p`
-  width: 500px;
-  white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 `
 export default Attraction;

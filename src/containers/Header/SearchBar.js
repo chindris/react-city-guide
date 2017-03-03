@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { searchText } from '../../actions/search';
 
@@ -11,14 +12,32 @@ class SearchBar extends Component {
   render() {
     const {search} = this.props;
     return (
-      <input
-        type="text"
-        placeholder="Search for attractions"
-        value={search}
-        onChange={this.onSearchChanged} />
+      <Wrapper>
+        <SearchBox
+          type="text"
+          placeholder="Search for attractions..."
+          value={search}
+          onChange={this.onSearchChanged} />
+      </Wrapper>
     )
   }
 }
+
+const Wrapper = styled.div`
+  text-align: center;
+  width: 100%;
+`
+
+const SearchBox = styled.input`
+  margin: 10px auto;
+  width: 50%;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  &:focus {
+    outline: none;
+  }
+`
 
 const mapStateToProps = (state) => {
   return {
