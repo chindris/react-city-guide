@@ -37,9 +37,58 @@ const initialState = {
         },
         image: 'http://www.lessons4living.com/images/penclchk.gif',
         reviews: []
+      },
+      {
+        id: 3,
+        title: 'Location 3',
+        description: 'Some description for the location 3',
+        rating: 4,
+        address: 'Address of location 3',
+        location: {
+          lat: 37.739703,
+          lng: -122.428093
+        },
+        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        reviews: []
+      },
+      {
+        id: 4,
+        title: 'Location 4',
+        description: 'Some description for the location 4',
+        rating: 1,
+        address: 'Address of location 4',
+        location: {
+          lat: 37.759703,
+          lng: -122.498093
+        },
+        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        reviews: []
       }
     ],
     nextReviewId: 3,
+  },
+  tours: {
+    list: [
+      {
+        id: 1,
+        title: 'The first tour',
+        description: 'This is the first tour',
+        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        attractions: [1, 2],
+      },
+      {
+        id: 2,
+        title: 'The secoud tour',
+        description: 'This is the second tour',
+        image: 'http://www.lessons4living.com/images/penclchk.gif',
+        attractions: [1, 3, 4],
+      }
+    ]
+  },
+  filters: {
+    category: {
+      value: 'attractions',
+    },
   }
 }
 
