@@ -13,13 +13,15 @@ class App extends Component {
     return (
       <MainContainer>
         <Header category={category} />
-        {
-          (category === 'attractions' && <AttractionsList />) || null
-        }
-        {
-          (category === 'tours' && <ToursList />) || null
-        }
-        <TravelMap />
+        <Wrapper>
+          {
+            (category === 'attractions' && <AttractionsList />) || null
+          }
+          {
+            (category === 'tours' && <ToursList />) || null
+          }
+          <TravelMap />
+        </ Wrapper>
       </MainContainer>
     );
   }
